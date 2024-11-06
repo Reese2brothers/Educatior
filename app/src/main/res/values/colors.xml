@@ -7,4 +7,11 @@
     <color name="teal_700">#FF018786</color>
     <color name="black">#FF000000</color>
     <color name="white">#FFFFFFFF</color>
+    <color name="blacktext">#271500</color>
+    <color name="gradup">#FFBA69</color>
+    <color name="graddown">#FDDDB3</color>
+    <color name="continuetext">#D07000</color>
+    <color name="buttoncontinue">#F6BE02</color>
+    <color name="rozoviy">#FFF4E6</color>
+    <color name="red">#FF0000</color>
 </resources>
