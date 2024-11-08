@@ -21,6 +21,7 @@ import androidx.compose.material.Button
 import androidx.compose.material.ButtonDefaults
 import androidx.compose.material.Text
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.MutableState
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
 import androidx.compose.ui.Alignment
@@ -43,9 +44,10 @@ import com.educat.orteacher.assos.NavigationGraph
 import com.educat.orteacher.assos.R
 
 @Composable
-fun MainScreen(navController: NavController) {
+fun MainScreen(navController: NavController, initialTab: String? = "Home") {
     val activity = LocalContext.current as MainActivity
     val subNavController = rememberNavController()
+    val selectedTab = remember { mutableStateOf(initialTab) }
 
     BackHandler {
         if (!subNavController.popBackStack()) {
@@ -59,43 +61,89 @@ fun MainScreen(navController: NavController) {
         verticalArrangement = Arrangement.SpaceBetween) {
         Column(modifier = Modifier.fillMaxWidth().weight(1f),
         horizontalAlignment = Alignment.CenterHorizontally) {
-            NavigationGraph(subNavController = subNavController, navController = navController)
+//            NavigationGraph(
+//                subNavController = subNavController,
+//                navController = navController,
+//                selectedTab = "StudentsScreen"
+//            )
+            when (selectedTab.value) {
+                "Students" -> NavigationGraph(subNavController, navController, selectedTab,"StudentsScreen")
+                // другие экраны вкладок здесь
+                else -> NavigationGraph(subNavController, navController, selectedTab,"SubMainScreen")
+            }
         }
-        Row { MainNavigation(subNavController) }
+        Row { MainNavigation(subNavController, selectedTab) }
     }
 }
 
+//@Composable
+//fun MainNavigation(subNavController: NavController, selectedTab: MutableState<String?>) {
+//    Row(
+//        horizontalArrangement = Arrangement.SpaceAround,
+//        verticalAlignment = Alignment.CenterVertically,
+//        modifier = Modifier.fillMaxWidth().wrapContentHeight().background(colorResource(R.color.continuetext))
+//    ) {
+//        val selectedIcon = remember { mutableStateOf("SubMainScreen") }
+//        val icons = listOf(
+//            "SubMainScreen" to R.drawable.mainscreen,
+//            "StudentsScreen" to R.drawable.parents,
+//            "PlanLessonsScreen" to R.drawable.planlessons,
+//            "OcenkiOtchetiScreen" to R.drawable.ocenkiotcheti
+//        )
+//        icons.forEach { (route, iconRes) ->
+//            Image(
+//                painter = painterResource(iconRes),
+//                contentDescription = route,
+//                modifier = Modifier.size(50.dp).padding(top = 4.dp, bottom = 4.dp).clickable {
+//                        selectedIcon.value = route
+//                        subNavController.navigate(route)
+//                    subNavController.navigate(route) {
+//                        popUpTo(subNavController.graph.startDestinationId) {
+//                            saveState = true
+//                        }
+//                        launchSingleTop = true
+//                        restoreState = true
+//                    }
+//                    },
+//                colorFilter = ColorFilter.tint(
+//                    if (selectedIcon.value == route) colorResource(R.color.black) else colorResource(
+//                        R.color.graddown
+//                    )
+//                )
+//            )
+//        }
+//    }
+//}
 @Composable
-fun MainNavigation(subNavController: NavController) {
+fun MainNavigation(navController: NavController, selectedTab: MutableState<String?>) {
+    val tabs = listOf(
+        "SubMainScreen" to R.drawable.mainscreen,
+        "StudentsScreen" to R.drawable.parents,
+        "PlanLessonsScreen" to R.drawable.planlessons,
+        "OcenkiOtchetiScreen" to R.drawable.ocenkiotcheti
+    )
+
     Row(
         horizontalArrangement = Arrangement.SpaceAround,
         verticalAlignment = Alignment.CenterVertically,
-        modifier = Modifier.fillMaxWidth().wrapContentHeight().background(colorResource(R.color.continuetext))
+        modifier = Modifier
+            .fillMaxWidth()
+            .wrapContentHeight()
+            .background(colorResource(R.color.continuetext))
     ) {
-        val selectedIcon = remember { mutableStateOf("SubMainScreen") }
-        val icons = listOf(
-            "SubMainScreen" to R.drawable.mainscreen,
-            "StudentsScreen" to R.drawable.parents,
-            "PlanLessonsScreen" to R.drawable.planlessons,
-            "OcenkiOtchetiScreen" to R.drawable.ocenkiotcheti
-        )
-        icons.forEach { (route, iconRes) ->
+        tabs.forEach { (route, iconRes) ->
             Image(
                 painter = painterResource(iconRes),
                 contentDescription = route,
-                modifier = Modifier.size(50.dp).padding(top = 4.dp, bottom = 4.dp).clickable {
-                        selectedIcon.value = route
-                        subNavController.navigate(route)
-                    subNavController.navigate(route) {
-                        popUpTo(subNavController.graph.startDestinationId) {
-                            saveState = true
-                        }
-                        launchSingleTop = true
-                        restoreState = true
-                    }
+                modifier = Modifier
+                    .size(50.dp)
+                    .padding(top = 4.dp, bottom = 4.dp)
+                    .clickable {
+                        selectedTab.value = route
+                        navController.navigate(route)
                     },
                 colorFilter = ColorFilter.tint(
-                    if (selectedIcon.value == route) colorResource(R.color.black) else colorResource(
+                    if (selectedTab.value == route) colorResource(R.color.black) else colorResource(
                         R.color.graddown
                     )
                 )
@@ -104,7 +152,7 @@ fun MainNavigation(subNavController: NavController) {
     }
 }
 @Composable
-fun SubMainScreen(navController: NavController){
+fun SubMainScreen(navController: NavController, selectedTab: MutableState<String?>){
     Column(modifier = Modifier.background(brush = Brush.verticalGradient(listOf(
         colorResource(R.color.gradup), colorResource(R.color.graddown)))),
         horizontalAlignment = Alignment.CenterHorizontally,

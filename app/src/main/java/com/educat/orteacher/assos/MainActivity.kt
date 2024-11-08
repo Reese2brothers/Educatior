@@ -22,7 +22,9 @@ class MainActivity : ComponentActivity() {
         setContent {
             ScreenStatusBar(colorResource(id = R.color.black))
             val navController = rememberNavController()
-            NavGraphNavigate(this, navController)
+            val subNavController = rememberNavController()
+            val parNavController = rememberNavController()
+            NavGraphNavigate(this, navController, subNavController, parNavController)
         }
     }
 }

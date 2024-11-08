@@ -56,7 +56,9 @@ fun StartScreen(navController: NavController){
             fontWeight = FontWeight.Bold,
             fontFamily = FontFamily(Font(R.font.interv)),
             textAlign = TextAlign.Center)
-        Button(onClick = { navController.navigate("MainScreen") },
+        Button(onClick = {
+            navController.navigate("MainScreen/no_data")
+                         },
             modifier = Modifier.fillMaxWidth().padding(start = 16.dp, end = 16.dp, top = 32.dp),
             colors = ButtonDefaults.buttonColors(backgroundColor = colorResource(R.color.buttoncontinue)),
             shape = RoundedCornerShape(24.dp),
