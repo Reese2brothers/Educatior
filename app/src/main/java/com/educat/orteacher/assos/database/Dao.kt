@@ -134,3 +134,100 @@ interface DadsDao {
     suspend fun deleteAll()
 
 }
+
+@Dao
+interface MeetingHistoryDao {
+    @Query("SELECT * FROM meetinghistory")
+    fun getAll(): Flow<List<MeetingHistory>>
+
+    @Insert(onConflict = OnConflictStrategy.REPLACE)
+    suspend fun insert(meetinghistory: MeetingHistory)
+
+    @Update
+    suspend fun update(meetinghistory: MeetingHistory)
+
+    @Delete
+    suspend fun delete(meetinghistory: MeetingHistory)
+
+    @Query("DELETE FROM meetinghistory")
+    suspend fun deleteAll()
+
+    @Query("DELETE FROM meetinghistory WHERE id = :id")
+    suspend fun deleteById(id: Int)
+
+}
+
+@Dao
+interface MathematicsItemDao {
+    @Query("SELECT * FROM mathematicsitem")
+    fun getAll(): Flow<List<MathematicsItem>>
+
+    @Insert(onConflict = OnConflictStrategy.REPLACE)
+    suspend fun insert(mathematicsitem: MathematicsItem)
+
+    @Update
+    suspend fun update(mathematicsitem: MathematicsItem)
+
+    @Delete
+    suspend fun delete(mathematicsitem: MathematicsItem)
+
+    @Query("DELETE FROM mathematicsitem")
+    suspend fun deleteAll()
+
+    @Query("DELETE FROM mathematicsitem WHERE numberkey = :key")
+    suspend fun deleteByKey(key: String)
+
+    @Query("SELECT * FROM mathematicsitem WHERE numberkey = :key LIMIT 1")
+    fun getByKey(key: String): Flow<MathematicsItem?>
+
+}
+
+@Dao
+interface LanguageItemDao {
+    @Query("SELECT * FROM languageitem")
+    fun getAll(): Flow<List<LanguageItem>>
+
+    @Insert(onConflict = OnConflictStrategy.REPLACE)
+    suspend fun insert(languageitem: LanguageItem)
+
+    @Update
+    suspend fun update(languageitem: LanguageItem)
+
+    @Delete
+    suspend fun delete(languageitem: LanguageItem)
+
+    @Query("DELETE FROM languageitem")
+    suspend fun deleteAll()
+
+    @Query("DELETE FROM languageitem WHERE numberkey = :key")
+    suspend fun deleteByKey(key: String)
+
+    @Query("SELECT * FROM languageitem WHERE numberkey = :key LIMIT 1")
+    fun getByKey(key: String): Flow<LanguageItem?>
+
+}
+
+@Dao
+interface LiteratureItemDao {
+    @Query("SELECT * FROM literatureitem")
+    fun getAll(): Flow<List<LiteratureItem>>
+
+    @Insert(onConflict = OnConflictStrategy.REPLACE)
+    suspend fun insert(literatureitem: LiteratureItem)
+
+    @Update
+    suspend fun update(literatureitem: LiteratureItem)
+
+    @Delete
+    suspend fun delete(literatureitem: LiteratureItem)
+
+    @Query("DELETE FROM literatureitem")
+    suspend fun deleteAll()
+
+    @Query("DELETE FROM literatureitem WHERE numberkey = :key")
+    suspend fun deleteByKey(key: String)
+
+    @Query("SELECT * FROM literatureitem WHERE numberkey = :key LIMIT 1")
+    fun getByKey(key: String): Flow<LiteratureItem?>
+
+}

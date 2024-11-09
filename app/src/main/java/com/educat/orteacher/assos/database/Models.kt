@@ -79,3 +79,56 @@ data class Dads(
     @PrimaryKey(autoGenerate = true)
     var id: Int = 0
 }
+
+@Entity
+data class MeetingHistory(
+    val data : String,
+    var label : String,
+    var coments : String
+)
+{
+    @PrimaryKey(autoGenerate = true)
+    var id: Int = 0
+}
+
+@Entity
+data class MathematicsItem(
+    val topic : String,
+    var homework : String,
+    var classnumber : String,
+    var classroom : String,
+    var comment : String,
+    val numberkey : String
+)
+{
+    @PrimaryKey(autoGenerate = true)
+    var id: Int = 0
+}
+
+@Entity
+data class LanguageItem(
+    val topic : String,
+    var homework : String,
+    var classnumber : String,
+    var classroom : String,
+    var comment : String,
+    val numberkey : String
+)
+{
+    @PrimaryKey(autoGenerate = true)
+    var id: Int = 0
+}
+
+@Entity
+data class LiteratureItem(
+    val topic : String,
+    var homework : String,
+    var classnumber : String,
+    var classroom : String,
+    var comment : String,
+    val numberkey : String
+)
+{
+    @PrimaryKey(autoGenerate = true)
+    var id: Int = 0
+}

@@ -13,6 +13,7 @@ import com.educat.orteacher.assos.screens.AssessmentsScreen
 import com.educat.orteacher.assos.screens.ContinueScreen
 import com.educat.orteacher.assos.screens.MainNavigation
 import com.educat.orteacher.assos.screens.MainScreen
+import com.educat.orteacher.assos.screens.MeetingHistoryScreen
 import com.educat.orteacher.assos.screens.NewStudentsDetailsScreen
 import com.educat.orteacher.assos.screens.OcenkiOtchetiScreen
 import com.educat.orteacher.assos.screens.ParentDad
@@ -77,13 +78,18 @@ fun NavGraphNavigate(context : Context, navController: NavHostController, subNav
         composable("AssessmentsScreen") {
             AssessmentsScreen(navController)
         }
-        composable( "ParentsScreen/{name}",
+        composable(
+            "ParentsScreen/{name}",
             arguments = listOf(navArgument("name") { type = NavType.StringType })
         ) { backStackEntry ->
             val name = backStackEntry.arguments?.getString("name") ?: ""
-            ParentsScreen(navController = navController, name = name) }
+            ParentsScreen(navController = navController, name = name)
+        }
+        composable("MeetingHistoryScreen") {
+            MeetingHistoryScreen()
         }
     }
+}
 
 
 @Composable
@@ -98,7 +104,7 @@ fun NavigationGraph(subNavController: NavHostController, navController: NavContr
             StudentsScreen(subNavController, navController)
         }
         composable("PlanLessonsScreen") {
-            PlanLessonsScreen(subNavController)
+            PlanLessonsScreen()
         }
         composable("OcenkiOtchetiScreen") {
             OcenkiOtchetiScreen(subNavController)

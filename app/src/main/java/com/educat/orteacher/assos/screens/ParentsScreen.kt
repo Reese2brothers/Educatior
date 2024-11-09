@@ -78,7 +78,7 @@ fun ParentsScreen(navController: NavController, name : String){
         }
         Column(modifier = Modifier.fillMaxWidth().padding(bottom = 64.dp)) {
             Button(onClick = {
-                //navController.navigate("ParentsScreen")
+                navController.navigate("MeetingHistoryScreen")
             },
                 modifier = Modifier.fillMaxWidth().padding(start = 32.dp, end = 32.dp, top = 8.dp),
                 colors = ButtonDefaults.buttonColors(backgroundColor = colorResource(R.color.buttoncontinue)),
