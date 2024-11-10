@@ -231,3 +231,60 @@ interface LiteratureItemDao {
     fun getByKey(key: String): Flow<LiteratureItem?>
 
 }
+
+@Dao
+interface MathematicsPointsDao {
+    @Query("SELECT * FROM mathematicspoints")
+    fun getAll(): Flow<List<MathematicsPoints>>
+
+    @Insert(onConflict = OnConflictStrategy.REPLACE)
+    suspend fun insert(mathematicspoints: MathematicsPoints)
+
+    @Update
+    suspend fun update(mathematicspoints: MathematicsPoints)
+
+    @Delete
+    suspend fun delete(mathematicspoints: MathematicsPoints)
+
+    @Query("DELETE FROM mathematicspoints")
+    suspend fun deleteAll()
+
+}
+
+@Dao
+interface LanguagePointsDao {
+    @Query("SELECT * FROM languagepoints")
+    fun getAll(): Flow<List<LanguagePoints>>
+
+    @Insert(onConflict = OnConflictStrategy.REPLACE)
+    suspend fun insert(languagepoints: LanguagePoints)
+
+    @Update
+    suspend fun update(languagepoints: LanguagePoints)
+
+    @Delete
+    suspend fun delete(languagepoints: LanguagePoints)
+
+    @Query("DELETE FROM languagepoints")
+    suspend fun deleteAll()
+
+}
+
+@Dao
+interface LiteraturePointsDao {
+    @Query("SELECT * FROM literaturepoints")
+    fun getAll(): Flow<List<LiteraturePoints>>
+
+    @Insert(onConflict = OnConflictStrategy.REPLACE)
+    suspend fun insert(literaturepoints: LiteraturePoints)
+
+    @Update
+    suspend fun update(literaturepoints: LiteraturePoints)
+
+    @Delete
+    suspend fun delete(literaturepoints: LiteraturePoints)
+
+    @Query("DELETE FROM literaturepoints")
+    suspend fun deleteAll()
+
+}

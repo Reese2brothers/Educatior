@@ -132,3 +132,48 @@ data class LiteratureItem(
     @PrimaryKey(autoGenerate = true)
     var id: Int = 0
 }
+
+@Entity
+data class MathematicsPoints(
+    val name : String,
+    var mon : String,
+    var tue : String,
+    var wen : String,
+    var thu : String,
+    val fri : String,
+    val sat : String,
+)
+{
+    @PrimaryKey(autoGenerate = true)
+    var id: Int = 0
+}
+
+@Entity
+data class LanguagePoints(
+    val name : String,
+    var mon : String,
+    var tue : String,
+    var wen : String,
+    var thu : String,
+    val fri : String,
+    val sat : String,
+)
+{
+    @PrimaryKey(autoGenerate = true)
+    var id: Int = 0
+}
+
+@Entity
+data class LiteraturePoints(
+    val name : String,
+    var mon : String,
+    var tue : String,
+    var wen : String,
+    var thu : String,
+    val fri : String,
+    val sat : String,
+)
+{
+    @PrimaryKey(autoGenerate = true)
+    var id: Int = 0
+}

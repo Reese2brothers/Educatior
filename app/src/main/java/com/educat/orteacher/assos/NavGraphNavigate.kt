@@ -20,6 +20,7 @@ import com.educat.orteacher.assos.screens.ParentDad
 import com.educat.orteacher.assos.screens.ParentMum
 import com.educat.orteacher.assos.screens.ParentsScreen
 import com.educat.orteacher.assos.screens.PlanLessonsScreen
+import com.educat.orteacher.assos.screens.ReportScreen
 import com.educat.orteacher.assos.screens.SettingsScreen
 import com.educat.orteacher.assos.screens.StartScreen
 import com.educat.orteacher.assos.screens.StudentsDetailsScreen
@@ -88,6 +89,9 @@ fun NavGraphNavigate(context : Context, navController: NavHostController, subNav
         composable("MeetingHistoryScreen") {
             MeetingHistoryScreen()
         }
+        composable("ReportScreen") {
+            ReportScreen()
+        }
     }
 }
 
@@ -107,7 +111,7 @@ fun NavigationGraph(subNavController: NavHostController, navController: NavContr
             PlanLessonsScreen()
         }
         composable("OcenkiOtchetiScreen") {
-            OcenkiOtchetiScreen(subNavController)
+            OcenkiOtchetiScreen(navController)
         }
         composable("MainNavigation") {
             MainNavigation(subNavController, selectedTab)
