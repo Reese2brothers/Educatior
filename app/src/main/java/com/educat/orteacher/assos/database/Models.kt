@@ -177,3 +177,32 @@ data class LiteraturePoints(
     @PrimaryKey(autoGenerate = true)
     var id: Int = 0
 }
+
+@Entity
+data class PlannedEvents(
+    val event : String,
+    var data : String
+)
+{
+    @PrimaryKey(autoGenerate = true)
+    var id: Int = 0
+}
+
+@Entity
+data class SheduleOfLessons(
+    val lesson : String
+)
+{
+    @PrimaryKey(autoGenerate = true)
+    var id: Int = 0
+}
+
+@Entity
+data class ClassStudents(
+    val classs : String,
+    var students : String
+)
+{
+    @PrimaryKey(autoGenerate = true)
+    var id: Int = 0
+}

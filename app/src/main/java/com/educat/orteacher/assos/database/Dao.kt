@@ -288,3 +288,60 @@ interface LiteraturePointsDao {
     suspend fun deleteAll()
 
 }
+
+@Dao
+interface PlannedEventsDao {
+    @Query("SELECT * FROM plannedevents")
+    fun getAll(): Flow<List<PlannedEvents>>
+
+    @Insert(onConflict = OnConflictStrategy.REPLACE)
+    suspend fun insert(plannedevents: PlannedEvents)
+
+    @Update
+    suspend fun update(plannedevents: PlannedEvents)
+
+    @Delete
+    suspend fun delete(plannedevents: PlannedEvents)
+
+    @Query("DELETE FROM plannedevents")
+    suspend fun deleteAll()
+
+}
+
+@Dao
+interface SheduleOfLessonsDao {
+    @Query("SELECT * FROM sheduleoflessons")
+    fun getAll(): Flow<List<SheduleOfLessons>>
+
+    @Insert(onConflict = OnConflictStrategy.REPLACE)
+    suspend fun insert(sheduleoflessons: SheduleOfLessons)
+
+    @Update
+    suspend fun update(sheduleoflessons: SheduleOfLessons)
+
+    @Delete
+    suspend fun delete(sheduleoflessons: SheduleOfLessons)
+
+    @Query("DELETE FROM sheduleoflessons")
+    suspend fun deleteAll()
+
+}
+
+@Dao
+interface ClassStudentsDao {
+    @Query("SELECT * FROM classstudents")
+    fun getAll(): Flow<List<ClassStudents>>
+
+    @Insert(onConflict = OnConflictStrategy.REPLACE)
+    suspend fun insert(classstudents: ClassStudents)
+
+    @Update
+    suspend fun update(classstudents: ClassStudents)
+
+    @Delete
+    suspend fun delete(classstudents: ClassStudents)
+
+    @Query("DELETE FROM classstudents")
+    suspend fun deleteAll()
+
+}

@@ -26,7 +26,6 @@ import com.educat.orteacher.assos.screens.StartScreen
 import com.educat.orteacher.assos.screens.StudentsDetailsScreen
 import com.educat.orteacher.assos.screens.StudentsScreen
 import com.educat.orteacher.assos.screens.SubMainScreen
-import com.educat.orteacher.assos.screens.TimerScreen
 
 @Composable
 fun NavGraphNavigate(context : Context, navController: NavHostController, subNavController: NavHostController, parNavController: NavHostController) {
@@ -43,9 +42,6 @@ fun NavGraphNavigate(context : Context, navController: NavHostController, subNav
         }
         composable("SettingsScreen") {
             SettingsScreen(navController = navController)
-        }
-        composable("TimerScreen") {
-            TimerScreen(navController = navController)
         }
         composable("NewStudentsDetailsScreen") {
             NewStudentsDetailsScreen(

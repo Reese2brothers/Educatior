@@ -43,7 +43,6 @@ import androidx.compose.ui.text.font.Font
 import androidx.compose.ui.text.font.FontFamily
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextAlign
-import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.navigation.NavController
@@ -61,23 +60,38 @@ fun OcenkiOtchetiScreen(navController: NavController){
         var selectedItem by remember { mutableStateOf("Mathematics") }
         val options = listOf("Mathematics", "Language", "Literature")
 
-        Column(modifier = Modifier.fillMaxSize().systemBarsPadding().background(brush = Brush.verticalGradient
-            (listOf(colorResource(R.color.gradup), colorResource(R.color.graddown))))) {
-            Row(modifier = Modifier.fillMaxWidth().padding(start = 24.dp, end = 24.dp, top = 16.dp, bottom = 8.dp)
-                .background(colorResource(R.color.graddown), shape = RoundedCornerShape(24.dp)).clickable { expanded = true },
+        Column(modifier = Modifier
+            .fillMaxSize()
+            .systemBarsPadding()
+            .background(
+                brush = Brush.verticalGradient
+                    (listOf(colorResource(R.color.gradup), colorResource(R.color.graddown)))
+            )) {
+            Row(modifier = Modifier
+                .fillMaxWidth()
+                .padding(start = 24.dp, end = 24.dp, top = 16.dp, bottom = 8.dp)
+                .background(colorResource(R.color.graddown), shape = RoundedCornerShape(24.dp))
+                .clickable { expanded = true },
                 horizontalArrangement = Arrangement.SpaceBetween,
                 verticalAlignment = Alignment.CenterVertically) {
-                Box(modifier = Modifier.weight(1f).background(colorResource(R.color.graddown), shape = RoundedCornerShape(24.dp)).padding(8.dp)) {
+                Box(modifier = Modifier
+                    .weight(1f)
+                    .background(colorResource(R.color.graddown), shape = RoundedCornerShape(24.dp))
+                    .padding(8.dp)) {
                     Text(text = selectedItem, fontSize = 20.sp, fontWeight = FontWeight.Bold,
                         textAlign = TextAlign.Center, modifier = Modifier.fillMaxWidth()
                     )
                     DropdownMenu(expanded = expanded, onDismissRequest = { expanded = false },
-                        modifier = Modifier.background(colorResource(R.color.graddown)).wrapContentWidth()) {
+                        modifier = Modifier
+                            .background(colorResource(R.color.graddown))
+                            .wrapContentWidth()) {
                         options.forEach { option ->
                             DropdownMenuItem(onClick = { selectedItem = option
                                 expanded = false },
-                                modifier = Modifier.padding(start = 16.dp, end = 16.dp)
-                                    .background(colorResource(R.color.graddown)).fillMaxWidth()
+                                modifier = Modifier
+                                    .padding(start = 16.dp, end = 16.dp)
+                                    .background(colorResource(R.color.graddown))
+                                    .fillMaxWidth()
                             ) {
                                 Text(text = option, fontSize = 20.sp, fontWeight = FontWeight.Bold,
                                     textAlign = TextAlign.Center, modifier = Modifier.padding(start = 8.dp, end = 8.dp)
@@ -87,26 +101,36 @@ fun OcenkiOtchetiScreen(navController: NavController){
                     }
                 }
                 Image(painter = painterResource(R.drawable.iconcaret), contentDescription = "choise",
-                    modifier = Modifier.size(35.dp).padding(end = 16.dp)
+                    modifier = Modifier
+                        .size(35.dp)
+                        .padding(end = 16.dp)
                 )
             }
-            Column(modifier = Modifier.fillMaxWidth().weight(1f),
+            Column(modifier = Modifier
+                .fillMaxWidth()
+                .weight(1f),
                 horizontalAlignment = Alignment.CenterHorizontally) {
                 when (selectedItem) {
                     "Mathematics" -> {
-                        Column(modifier = Modifier.fillMaxWidth().weight(1f),
+                        Column(modifier = Modifier
+                            .fillMaxWidth()
+                            .weight(1f),
                             horizontalAlignment = Alignment.CenterHorizontally) {
                             MathematicsPoints()
                         }
                     }
                     "Language" -> {
-                        Column(modifier = Modifier.fillMaxWidth().weight(1f),
+                        Column(modifier = Modifier
+                            .fillMaxWidth()
+                            .weight(1f),
                             horizontalAlignment = Alignment.CenterHorizontally) {
                             LanguagePoints()
                         }
                     }
                     "Literature" -> {
-                        Column(modifier = Modifier.fillMaxWidth().weight(1f),
+                        Column(modifier = Modifier
+                            .fillMaxWidth()
+                            .weight(1f),
                             horizontalAlignment = Alignment.CenterHorizontally) {
                             LiteraturePoints()
                         }
@@ -114,7 +138,9 @@ fun OcenkiOtchetiScreen(navController: NavController){
                 }
             }
             Button(onClick = {  navController.navigate("ReportScreen/$selectedItem") },
-                modifier = Modifier.fillMaxWidth().padding(start = 32.dp, end = 32.dp, bottom = 24.dp, top = 8.dp),
+                modifier = Modifier
+                    .fillMaxWidth()
+                    .padding(start = 32.dp, end = 32.dp, bottom = 24.dp, top = 8.dp),
                 colors = ButtonDefaults.buttonColors(backgroundColor = colorResource(R.color.buttoncontinue)),
                 shape = RoundedCornerShape(24.dp),
                 elevation = ButtonDefaults.elevation(defaultElevation = 4.dp)){
@@ -147,17 +173,41 @@ fun MathematicsPoints(){
         Row(modifier = Modifier.fillMaxWidth(),
             horizontalArrangement = Arrangement.End,
             verticalAlignment = Alignment.CenterVertically) {
+//            Image(painter = painterResource(R.drawable.baseline_delete), contentDescription = "print",
+//                modifier = Modifier
+//                    .size(35.dp)
+//                    .padding(end = 8.dp)
+//                    .clickable {
+//                        scope.launch {
+//                            val printManager =
+//                                context.getSystemService(Context.PRINT_SERVICE) as PrintManager
+//                            val printAdapter = PrintDocumentAdapter(context, mathematicsPointsList)
+//                            val printAttributes = PrintAttributes
+//                                .Builder()
+//                                .build()
+//                            printManager.print("My Data Print", printAdapter, printAttributes)
+//                        }
+//                    }
+//            )
             Image(painter = painterResource(R.drawable.baseline_delete), contentDescription = "delete",
-                modifier = Modifier.size(35.dp).padding(end = 8.dp).clickable {
-                    scope.launch {
-                        db.mathematicsPointsDao().deleteAll()
+                modifier = Modifier
+                    .size(35.dp)
+                    .padding(end = 8.dp)
+                    .clickable {
+                        scope.launch {
+                            db
+                                .mathematicsPointsDao()
+                                .deleteAll()
+                        }
                     }
-                }
             )
             Image(painter = painterResource(R.drawable.add), contentDescription = "newdata",
-                modifier = Modifier.size(35.dp).padding(end = 16.dp).clickable {
-                    showDialog.value = true
-                }
+                modifier = Modifier
+                    .size(35.dp)
+                    .padding(end = 16.dp)
+                    .clickable {
+                        showDialog.value = true
+                    }
             )
             if (showDialog.value) {
                 AlertDialog(
@@ -233,13 +283,41 @@ fun MathematicsPoints(){
             }
         }
         Box(modifier = Modifier.fillMaxSize()){
-            Column(modifier = Modifier.fillMaxHeight().padding(start = 140.dp).background(colorResource(R.color.black)).width(1.dp)) {  }
-            Column(modifier = Modifier.fillMaxHeight().padding(start = 183.dp).background(colorResource(R.color.black)).width(1.dp)) {  }
-            Column(modifier = Modifier.fillMaxHeight().padding(start = 222.dp).background(colorResource(R.color.black)).width(1.dp)) {  }
-            Column(modifier = Modifier.fillMaxHeight().padding(start = 268.dp).background(colorResource(R.color.black)).width(1.dp)) {  }
-            Column(modifier = Modifier.fillMaxHeight().padding(start = 306.dp).background(colorResource(R.color.black)).width(1.dp)) {  }
-            Column(modifier = Modifier.fillMaxHeight().padding(start = 343.dp).background(colorResource(R.color.black)).width(1.dp)) {  }
-            Column(modifier = Modifier.fillMaxHeight().padding(start = 388.dp).background(colorResource(R.color.black)).width(1.dp)) {  }
+            Column(modifier = Modifier
+                .fillMaxHeight()
+                .padding(start = 140.dp)
+                .background(colorResource(R.color.black))
+                .width(1.dp)) {  }
+            Column(modifier = Modifier
+                .fillMaxHeight()
+                .padding(start = 183.dp)
+                .background(colorResource(R.color.black))
+                .width(1.dp)) {  }
+            Column(modifier = Modifier
+                .fillMaxHeight()
+                .padding(start = 222.dp)
+                .background(colorResource(R.color.black))
+                .width(1.dp)) {  }
+            Column(modifier = Modifier
+                .fillMaxHeight()
+                .padding(start = 268.dp)
+                .background(colorResource(R.color.black))
+                .width(1.dp)) {  }
+            Column(modifier = Modifier
+                .fillMaxHeight()
+                .padding(start = 306.dp)
+                .background(colorResource(R.color.black))
+                .width(1.dp)) {  }
+            Column(modifier = Modifier
+                .fillMaxHeight()
+                .padding(start = 343.dp)
+                .background(colorResource(R.color.black))
+                .width(1.dp)) {  }
+            Column(modifier = Modifier
+                .fillMaxHeight()
+                .padding(start = 388.dp)
+                .background(colorResource(R.color.black))
+                .width(1.dp)) {  }
             LazyColumn(modifier = Modifier.fillMaxSize()) {
                 item{
                     Row(modifier = Modifier.fillMaxWidth(),
@@ -251,7 +329,9 @@ fun MathematicsPoints(){
                             fontWeight = FontWeight.Bold,
                             fontFamily = FontFamily(Font(R.font.interv)),
                             modifier = Modifier.padding(start = 16.dp))
-                        Row( modifier = Modifier.weight(1f).padding(start = 24.dp), horizontalArrangement = Arrangement.SpaceBetween ) {
+                        Row( modifier = Modifier
+                            .weight(1f)
+                            .padding(start = 24.dp), horizontalArrangement = Arrangement.SpaceBetween ) {
                             listOf("Mon", "Tue", "Wed", "Thu", "Fri", "Sat").forEach { day ->
                                 Row( modifier = Modifier.weight(1f),
                                     verticalAlignment = Alignment.CenterVertically,
@@ -263,13 +343,20 @@ fun MathematicsPoints(){
                                         fontWeight = FontWeight.Bold,
                                         fontFamily = FontFamily(Font(R.font.interv)),
                                         modifier = Modifier.padding(horizontal = 4.dp) )
-                                    Column(modifier = Modifier.height(28.dp).background(colorResource(R.color.black))
-                                        .width(1.dp).padding(start = 4.dp) ){}
+                                    Column(modifier = Modifier
+                                        .height(28.dp)
+                                        .background(colorResource(R.color.black))
+                                        .width(1.dp)
+                                        .padding(start = 4.dp) ){}
                                 }
                             }
                         }
                     }
-                    Column(modifier = Modifier.fillMaxWidth().padding(horizontal = 4.dp).background(colorResource(R.color.black)).height(1.dp)) {  }
+                    Column(modifier = Modifier
+                        .fillMaxWidth()
+                        .padding(horizontal = 4.dp)
+                        .background(colorResource(R.color.black))
+                        .height(1.dp)) {  }
                 }
                 itemsIndexed(mathematicsPointsList){ index, item ->
                     Column(modifier = Modifier.fillMaxWidth()) {
@@ -300,14 +387,16 @@ fun MathematicsPoints(){
                                 }
                             }
                         }
-                        Row(modifier = Modifier.fillMaxWidth().padding(top = 4.dp).background(colorResource(R.color.black)).height(1.dp)) {}
+                        Row(modifier = Modifier
+                            .fillMaxWidth()
+                            .padding(top = 4.dp)
+                            .background(colorResource(R.color.black))
+                            .height(1.dp)) {}
                     }
                 }
             }
         }
     }
-
-
 }
 
 @Composable
@@ -331,16 +420,24 @@ fun LanguagePoints(){
             horizontalArrangement = Arrangement.End,
             verticalAlignment = Alignment.CenterVertically) {
             Image(painter = painterResource(R.drawable.baseline_delete), contentDescription = "delete",
-                modifier = Modifier.size(35.dp).padding(end = 8.dp).clickable {
-                    scope.launch {
-                        db.languagePointsDao().deleteAll()
+                modifier = Modifier
+                    .size(35.dp)
+                    .padding(end = 8.dp)
+                    .clickable {
+                        scope.launch {
+                            db
+                                .languagePointsDao()
+                                .deleteAll()
+                        }
                     }
-                }
             )
             Image(painter = painterResource(R.drawable.add), contentDescription = "newdata",
-                modifier = Modifier.size(35.dp).padding(end = 16.dp).clickable {
-                    showDialog.value = true
-                }
+                modifier = Modifier
+                    .size(35.dp)
+                    .padding(end = 16.dp)
+                    .clickable {
+                        showDialog.value = true
+                    }
             )
             if (showDialog.value) {
                 AlertDialog(
@@ -416,13 +513,41 @@ fun LanguagePoints(){
             }
         }
         Box(modifier = Modifier.fillMaxSize()){
-            Column(modifier = Modifier.fillMaxHeight().padding(start = 140.dp).background(colorResource(R.color.black)).width(1.dp)) {  }
-            Column(modifier = Modifier.fillMaxHeight().padding(start = 183.dp).background(colorResource(R.color.black)).width(1.dp)) {  }
-            Column(modifier = Modifier.fillMaxHeight().padding(start = 222.dp).background(colorResource(R.color.black)).width(1.dp)) {  }
-            Column(modifier = Modifier.fillMaxHeight().padding(start = 268.dp).background(colorResource(R.color.black)).width(1.dp)) {  }
-            Column(modifier = Modifier.fillMaxHeight().padding(start = 306.dp).background(colorResource(R.color.black)).width(1.dp)) {  }
-            Column(modifier = Modifier.fillMaxHeight().padding(start = 343.dp).background(colorResource(R.color.black)).width(1.dp)) {  }
-            Column(modifier = Modifier.fillMaxHeight().padding(start = 388.dp).background(colorResource(R.color.black)).width(1.dp)) {  }
+            Column(modifier = Modifier
+                .fillMaxHeight()
+                .padding(start = 140.dp)
+                .background(colorResource(R.color.black))
+                .width(1.dp)) {  }
+            Column(modifier = Modifier
+                .fillMaxHeight()
+                .padding(start = 183.dp)
+                .background(colorResource(R.color.black))
+                .width(1.dp)) {  }
+            Column(modifier = Modifier
+                .fillMaxHeight()
+                .padding(start = 222.dp)
+                .background(colorResource(R.color.black))
+                .width(1.dp)) {  }
+            Column(modifier = Modifier
+                .fillMaxHeight()
+                .padding(start = 268.dp)
+                .background(colorResource(R.color.black))
+                .width(1.dp)) {  }
+            Column(modifier = Modifier
+                .fillMaxHeight()
+                .padding(start = 306.dp)
+                .background(colorResource(R.color.black))
+                .width(1.dp)) {  }
+            Column(modifier = Modifier
+                .fillMaxHeight()
+                .padding(start = 343.dp)
+                .background(colorResource(R.color.black))
+                .width(1.dp)) {  }
+            Column(modifier = Modifier
+                .fillMaxHeight()
+                .padding(start = 388.dp)
+                .background(colorResource(R.color.black))
+                .width(1.dp)) {  }
             LazyColumn(modifier = Modifier.fillMaxSize()) {
                 item{
                     Row(modifier = Modifier.fillMaxWidth(),
@@ -434,7 +559,9 @@ fun LanguagePoints(){
                             fontWeight = FontWeight.Bold,
                             fontFamily = FontFamily(Font(R.font.interv)),
                             modifier = Modifier.padding(start = 16.dp))
-                        Row( modifier = Modifier.weight(1f).padding(start = 24.dp), horizontalArrangement = Arrangement.SpaceBetween ) {
+                        Row( modifier = Modifier
+                            .weight(1f)
+                            .padding(start = 24.dp), horizontalArrangement = Arrangement.SpaceBetween ) {
                             listOf("Mon", "Tue", "Wed", "Thu", "Fri", "Sat").forEach { day ->
                                 Row( modifier = Modifier.weight(1f),
                                     verticalAlignment = Alignment.CenterVertically,
@@ -446,13 +573,20 @@ fun LanguagePoints(){
                                         fontWeight = FontWeight.Bold,
                                         fontFamily = FontFamily(Font(R.font.interv)),
                                         modifier = Modifier.padding(horizontal = 4.dp) )
-                                    Column(modifier = Modifier.height(28.dp).background(colorResource(R.color.black))
-                                        .width(1.dp).padding(start = 4.dp) ){}
+                                    Column(modifier = Modifier
+                                        .height(28.dp)
+                                        .background(colorResource(R.color.black))
+                                        .width(1.dp)
+                                        .padding(start = 4.dp) ){}
                                 }
                             }
                         }
                     }
-                    Column(modifier = Modifier.fillMaxWidth().padding(horizontal = 4.dp).background(colorResource(R.color.black)).height(1.dp)) {  }
+                    Column(modifier = Modifier
+                        .fillMaxWidth()
+                        .padding(horizontal = 4.dp)
+                        .background(colorResource(R.color.black))
+                        .height(1.dp)) {  }
                 }
                 itemsIndexed(languagePointsList){ index, item ->
                     Column(modifier = Modifier.fillMaxWidth()) {
@@ -483,7 +617,11 @@ fun LanguagePoints(){
                                 }
                             }
                         }
-                        Row(modifier = Modifier.fillMaxWidth().padding(top = 4.dp).background(colorResource(R.color.black)).height(1.dp)) {}
+                        Row(modifier = Modifier
+                            .fillMaxWidth()
+                            .padding(top = 4.dp)
+                            .background(colorResource(R.color.black))
+                            .height(1.dp)) {}
                     }
                 }
             }
@@ -514,16 +652,24 @@ fun LiteraturePoints(){
             horizontalArrangement = Arrangement.End,
             verticalAlignment = Alignment.CenterVertically) {
             Image(painter = painterResource(R.drawable.baseline_delete), contentDescription = "delete",
-                modifier = Modifier.size(35.dp).padding(end = 8.dp).clickable {
-                    scope.launch {
-                        db.literaturePointsDao().deleteAll()
+                modifier = Modifier
+                    .size(35.dp)
+                    .padding(end = 8.dp)
+                    .clickable {
+                        scope.launch {
+                            db
+                                .literaturePointsDao()
+                                .deleteAll()
+                        }
                     }
-                }
             )
             Image(painter = painterResource(R.drawable.add), contentDescription = "newdata",
-                modifier = Modifier.size(35.dp).padding(end = 16.dp).clickable {
-                    showDialog.value = true
-                }
+                modifier = Modifier
+                    .size(35.dp)
+                    .padding(end = 16.dp)
+                    .clickable {
+                        showDialog.value = true
+                    }
             )
             if (showDialog.value) {
                 AlertDialog(
@@ -599,13 +745,41 @@ fun LiteraturePoints(){
             }
         }
         Box(modifier = Modifier.fillMaxSize()){
-            Column(modifier = Modifier.fillMaxHeight().padding(start = 140.dp).background(colorResource(R.color.black)).width(1.dp)) {  }
-            Column(modifier = Modifier.fillMaxHeight().padding(start = 183.dp).background(colorResource(R.color.black)).width(1.dp)) {  }
-            Column(modifier = Modifier.fillMaxHeight().padding(start = 222.dp).background(colorResource(R.color.black)).width(1.dp)) {  }
-            Column(modifier = Modifier.fillMaxHeight().padding(start = 268.dp).background(colorResource(R.color.black)).width(1.dp)) {  }
-            Column(modifier = Modifier.fillMaxHeight().padding(start = 306.dp).background(colorResource(R.color.black)).width(1.dp)) {  }
-            Column(modifier = Modifier.fillMaxHeight().padding(start = 343.dp).background(colorResource(R.color.black)).width(1.dp)) {  }
-            Column(modifier = Modifier.fillMaxHeight().padding(start = 388.dp).background(colorResource(R.color.black)).width(1.dp)) {  }
+            Column(modifier = Modifier
+                .fillMaxHeight()
+                .padding(start = 140.dp)
+                .background(colorResource(R.color.black))
+                .width(1.dp)) {  }
+            Column(modifier = Modifier
+                .fillMaxHeight()
+                .padding(start = 183.dp)
+                .background(colorResource(R.color.black))
+                .width(1.dp)) {  }
+            Column(modifier = Modifier
+                .fillMaxHeight()
+                .padding(start = 222.dp)
+                .background(colorResource(R.color.black))
+                .width(1.dp)) {  }
+            Column(modifier = Modifier
+                .fillMaxHeight()
+                .padding(start = 268.dp)
+                .background(colorResource(R.color.black))
+                .width(1.dp)) {  }
+            Column(modifier = Modifier
+                .fillMaxHeight()
+                .padding(start = 306.dp)
+                .background(colorResource(R.color.black))
+                .width(1.dp)) {  }
+            Column(modifier = Modifier
+                .fillMaxHeight()
+                .padding(start = 343.dp)
+                .background(colorResource(R.color.black))
+                .width(1.dp)) {  }
+            Column(modifier = Modifier
+                .fillMaxHeight()
+                .padding(start = 388.dp)
+                .background(colorResource(R.color.black))
+                .width(1.dp)) {  }
             LazyColumn(modifier = Modifier.fillMaxSize()) {
                 item{
                     Row(modifier = Modifier.fillMaxWidth(),
@@ -617,7 +791,9 @@ fun LiteraturePoints(){
                             fontWeight = FontWeight.Bold,
                             fontFamily = FontFamily(Font(R.font.interv)),
                             modifier = Modifier.padding(start = 16.dp))
-                        Row( modifier = Modifier.weight(1f).padding(start = 24.dp), horizontalArrangement = Arrangement.SpaceBetween ) {
+                        Row( modifier = Modifier
+                            .weight(1f)
+                            .padding(start = 24.dp), horizontalArrangement = Arrangement.SpaceBetween ) {
                             listOf("Mon", "Tue", "Wed", "Thu", "Fri", "Sat").forEach { day ->
                                 Row( modifier = Modifier.weight(1f),
                                     verticalAlignment = Alignment.CenterVertically,
@@ -629,13 +805,20 @@ fun LiteraturePoints(){
                                         fontWeight = FontWeight.Bold,
                                         fontFamily = FontFamily(Font(R.font.interv)),
                                         modifier = Modifier.padding(horizontal = 4.dp) )
-                                    Column(modifier = Modifier.height(28.dp).background(colorResource(R.color.black))
-                                        .width(1.dp).padding(start = 4.dp) ){}
+                                    Column(modifier = Modifier
+                                        .height(28.dp)
+                                        .background(colorResource(R.color.black))
+                                        .width(1.dp)
+                                        .padding(start = 4.dp) ){}
                                 }
                             }
                         }
                     }
-                    Column(modifier = Modifier.fillMaxWidth().padding(horizontal = 4.dp).background(colorResource(R.color.black)).height(1.dp)) {  }
+                    Column(modifier = Modifier
+                        .fillMaxWidth()
+                        .padding(horizontal = 4.dp)
+                        .background(colorResource(R.color.black))
+                        .height(1.dp)) {  }
                 }
                 itemsIndexed(literaturePointsList){ index, item ->
                     Column(modifier = Modifier.fillMaxWidth()) {
@@ -666,7 +849,11 @@ fun LiteraturePoints(){
                                 }
                             }
                         }
-                        Row(modifier = Modifier.fillMaxWidth().padding(top = 4.dp).background(colorResource(R.color.black)).height(1.dp)) {}
+                        Row(modifier = Modifier
+                            .fillMaxWidth()
+                            .padding(top = 4.dp)
+                            .background(colorResource(R.color.black))
+                            .height(1.dp)) {}
                     }
                 }
             }

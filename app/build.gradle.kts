@@ -63,6 +63,7 @@ dependencies {
     implementation(libs.androidx.foundation.android)
     implementation(libs.androidx.foundation.layout.android)
     implementation(libs.androidx.benchmark.macro)
+    implementation(libs.volley)
     testImplementation(libs.junit)
     androidTestImplementation(libs.androidx.junit)
     androidTestImplementation(libs.androidx.espresso.core)
@@ -99,10 +100,12 @@ dependencies {
     implementation("androidx.lifecycle:lifecycle-runtime-ktx:2.7.0")
 
     //Coil
-    implementation("io.coil-kt:coil-compose:2.2.2")
+    implementation("io.coil-kt:coil-compose:2.4.0")
     implementation("io.coil-kt:coil-gif:2.1.0")
 
     implementation("com.google.devtools.ksp:symbol-processing-api:2.0.21-1.0.25")
 
     implementation ("co.yml:ycharts:2.1.0")
+    implementation ("androidx.media:media:1.6.0")
+
 }

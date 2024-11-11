@@ -8,7 +8,8 @@ import androidx.room.RoomDatabase
 @Database(entities = [Mathematics::class, Language::class, Literature::class, Students::class,
                      Mums::class, Dads::class, MeetingHistory::class, MathematicsItem::class,
                      LanguageItem::class, LiteratureItem::class, MathematicsPoints::class,
-                     LanguagePoints::class, LiteraturePoints::class], version = 1)
+                     LanguagePoints::class, LiteraturePoints::class, PlannedEvents::class,
+                     SheduleOfLessons::class, ClassStudents::class], version = 1)
 abstract class AppDatabase : RoomDatabase() {
     abstract fun mathematicsDao(): MathematicsDao
     abstract fun languageDao(): LanguageDao
@@ -23,6 +24,9 @@ abstract class AppDatabase : RoomDatabase() {
     abstract fun mathematicsPointsDao(): MathematicsPointsDao
     abstract fun languagePointsDao(): LanguagePointsDao
     abstract fun literaturePointsDao(): LiteraturePointsDao
+    abstract fun plannedEventsDao(): PlannedEventsDao
+    abstract fun sheduleOfLessonsDao(): SheduleOfLessonsDao
+    abstract fun classStudentsDao(): ClassStudentsDao
 
 
     companion object {
