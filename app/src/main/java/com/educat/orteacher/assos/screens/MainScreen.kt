@@ -61,14 +61,10 @@ fun MainScreen(navController: NavController, initialTab: String? = "Home") {
         verticalArrangement = Arrangement.SpaceBetween) {
         Column(modifier = Modifier.fillMaxWidth().weight(1f),
         horizontalAlignment = Alignment.CenterHorizontally) {
-//            NavigationGraph(
-//                subNavController = subNavController,
-//                navController = navController,
-//                selectedTab = "StudentsScreen"
-//            )
             when (selectedTab.value) {
                 "Students" -> NavigationGraph(subNavController, navController, selectedTab,"StudentsScreen")
-                // другие экраны вкладок здесь
+                "PlanLessons" -> NavigationGraph(subNavController, navController, selectedTab,"PlanLessonsScreen")
+                "OcenkiOtcheti" -> NavigationGraph(subNavController, navController, selectedTab,"OcenkiOtchetiScreen")
                 else -> NavigationGraph(subNavController, navController, selectedTab,"SubMainScreen")
             }
         }

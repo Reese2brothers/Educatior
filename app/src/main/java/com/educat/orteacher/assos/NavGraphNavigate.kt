@@ -89,8 +89,11 @@ fun NavGraphNavigate(context : Context, navController: NavHostController, subNav
         composable("MeetingHistoryScreen") {
             MeetingHistoryScreen()
         }
-        composable("ReportScreen") {
-            ReportScreen()
+        composable("ReportScreen/{selectedItem}",
+            arguments = listOf(navArgument("selectedItem") { type = NavType.StringType })) {
+                backStackEntry ->
+            val selectedItem = backStackEntry.arguments?.getString("selectedItem") ?: ""
+            ReportScreen(navController, selectedItem)
         }
     }
 }

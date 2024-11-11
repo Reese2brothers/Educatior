@@ -113,7 +113,7 @@ fun OcenkiOtchetiScreen(navController: NavController){
                     }
                 }
             }
-            Button(onClick = {  navController.navigate("ReportScreen") },
+            Button(onClick = {  navController.navigate("ReportScreen/$selectedItem") },
                 modifier = Modifier.fillMaxWidth().padding(start = 32.dp, end = 32.dp, bottom = 24.dp, top = 8.dp),
                 colors = ButtonDefaults.buttonColors(backgroundColor = colorResource(R.color.buttoncontinue)),
                 shape = RoundedCornerShape(24.dp),
