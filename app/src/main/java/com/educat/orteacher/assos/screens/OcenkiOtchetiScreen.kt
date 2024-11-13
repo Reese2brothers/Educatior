@@ -288,36 +288,6 @@ fun MathematicsPoints(){
                 .padding(start = 140.dp)
                 .background(colorResource(R.color.black))
                 .width(1.dp)) {  }
-            Column(modifier = Modifier
-                .fillMaxHeight()
-                .padding(start = 183.dp)
-                .background(colorResource(R.color.black))
-                .width(1.dp)) {  }
-            Column(modifier = Modifier
-                .fillMaxHeight()
-                .padding(start = 222.dp)
-                .background(colorResource(R.color.black))
-                .width(1.dp)) {  }
-            Column(modifier = Modifier
-                .fillMaxHeight()
-                .padding(start = 268.dp)
-                .background(colorResource(R.color.black))
-                .width(1.dp)) {  }
-            Column(modifier = Modifier
-                .fillMaxHeight()
-                .padding(start = 306.dp)
-                .background(colorResource(R.color.black))
-                .width(1.dp)) {  }
-            Column(modifier = Modifier
-                .fillMaxHeight()
-                .padding(start = 343.dp)
-                .background(colorResource(R.color.black))
-                .width(1.dp)) {  }
-            Column(modifier = Modifier
-                .fillMaxHeight()
-                .padding(start = 388.dp)
-                .background(colorResource(R.color.black))
-                .width(1.dp)) {  }
             LazyColumn(modifier = Modifier.fillMaxSize()) {
                 item{
                     Row(modifier = Modifier.fillMaxWidth(),
@@ -331,14 +301,14 @@ fun MathematicsPoints(){
                             modifier = Modifier.padding(start = 16.dp))
                         Row( modifier = Modifier
                             .weight(1f)
-                            .padding(start = 24.dp), horizontalArrangement = Arrangement.SpaceBetween ) {
+                            .padding(start = 28.dp), horizontalArrangement = Arrangement.SpaceBetween ) {
                             listOf("Mon", "Tue", "Wed", "Thu", "Fri", "Sat").forEach { day ->
                                 Row( modifier = Modifier.weight(1f),
                                     verticalAlignment = Alignment.CenterVertically,
                                     horizontalArrangement = Arrangement.Center ) {
                                     Text( text = day,
                                         color = colorResource(R.color.blacktext),
-                                        fontSize = 16.sp,
+                                        fontSize = 14.sp,
                                         textAlign = TextAlign.Center,
                                         fontWeight = FontWeight.Bold,
                                         fontFamily = FontFamily(Font(R.font.interv)),
@@ -518,36 +488,6 @@ fun LanguagePoints(){
                 .padding(start = 140.dp)
                 .background(colorResource(R.color.black))
                 .width(1.dp)) {  }
-            Column(modifier = Modifier
-                .fillMaxHeight()
-                .padding(start = 183.dp)
-                .background(colorResource(R.color.black))
-                .width(1.dp)) {  }
-            Column(modifier = Modifier
-                .fillMaxHeight()
-                .padding(start = 222.dp)
-                .background(colorResource(R.color.black))
-                .width(1.dp)) {  }
-            Column(modifier = Modifier
-                .fillMaxHeight()
-                .padding(start = 268.dp)
-                .background(colorResource(R.color.black))
-                .width(1.dp)) {  }
-            Column(modifier = Modifier
-                .fillMaxHeight()
-                .padding(start = 306.dp)
-                .background(colorResource(R.color.black))
-                .width(1.dp)) {  }
-            Column(modifier = Modifier
-                .fillMaxHeight()
-                .padding(start = 343.dp)
-                .background(colorResource(R.color.black))
-                .width(1.dp)) {  }
-            Column(modifier = Modifier
-                .fillMaxHeight()
-                .padding(start = 388.dp)
-                .background(colorResource(R.color.black))
-                .width(1.dp)) {  }
             LazyColumn(modifier = Modifier.fillMaxSize()) {
                 item{
                     Row(modifier = Modifier.fillMaxWidth(),
@@ -568,7 +508,7 @@ fun LanguagePoints(){
                                     horizontalArrangement = Arrangement.Center ) {
                                     Text( text = day,
                                         color = colorResource(R.color.blacktext),
-                                        fontSize = 16.sp,
+                                        fontSize = 14.sp,
                                         textAlign = TextAlign.Center,
                                         fontWeight = FontWeight.Bold,
                                         fontFamily = FontFamily(Font(R.font.interv)),
@@ -750,36 +690,6 @@ fun LiteraturePoints(){
                 .padding(start = 140.dp)
                 .background(colorResource(R.color.black))
                 .width(1.dp)) {  }
-            Column(modifier = Modifier
-                .fillMaxHeight()
-                .padding(start = 183.dp)
-                .background(colorResource(R.color.black))
-                .width(1.dp)) {  }
-            Column(modifier = Modifier
-                .fillMaxHeight()
-                .padding(start = 222.dp)
-                .background(colorResource(R.color.black))
-                .width(1.dp)) {  }
-            Column(modifier = Modifier
-                .fillMaxHeight()
-                .padding(start = 268.dp)
-                .background(colorResource(R.color.black))
-                .width(1.dp)) {  }
-            Column(modifier = Modifier
-                .fillMaxHeight()
-                .padding(start = 306.dp)
-                .background(colorResource(R.color.black))
-                .width(1.dp)) {  }
-            Column(modifier = Modifier
-                .fillMaxHeight()
-                .padding(start = 343.dp)
-                .background(colorResource(R.color.black))
-                .width(1.dp)) {  }
-            Column(modifier = Modifier
-                .fillMaxHeight()
-                .padding(start = 388.dp)
-                .background(colorResource(R.color.black))
-                .width(1.dp)) {  }
             LazyColumn(modifier = Modifier.fillMaxSize()) {
                 item{
                     Row(modifier = Modifier.fillMaxWidth(),
@@ -800,7 +710,7 @@ fun LiteraturePoints(){
                                     horizontalArrangement = Arrangement.Center ) {
                                     Text( text = day,
                                         color = colorResource(R.color.blacktext),
-                                        fontSize = 16.sp,
+                                        fontSize = 14.sp,
                                         textAlign = TextAlign.Center,
                                         fontWeight = FontWeight.Bold,
                                         fontFamily = FontFamily(Font(R.font.interv)),

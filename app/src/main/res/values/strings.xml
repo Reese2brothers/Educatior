@@ -1,3 +1,4 @@
 <resources>
     <string name="app_name">Educatior</string>
+    <string name="title_activity_own">OwnActivity</string>
 </resources>

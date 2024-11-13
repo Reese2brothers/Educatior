@@ -90,18 +90,18 @@ fun ParentsScreen(navController: NavController, name : String){
                     fontWeight = FontWeight.Bold
                 )
             }
-            Button(onClick = { // navController.navigate("AssessmentsScreen")
-            },
-                modifier = Modifier.fillMaxWidth().padding(start = 32.dp, end = 32.dp, top = 8.dp),
-                colors = ButtonDefaults.buttonColors(backgroundColor = colorResource(R.color.buttoncontinue)),
-                shape = RoundedCornerShape(24.dp),
-                elevation = ButtonDefaults.elevation(defaultElevation = 4.dp)){
-                Text(text = "Contact",
-                    color = colorResource(R.color.blacktext),
-                    fontSize = 20.sp,
-                    fontWeight = FontWeight.Bold
-                )
-            }
+//            Button(onClick = { // navController.navigate("AssessmentsScreen")
+//            },
+//                modifier = Modifier.fillMaxWidth().padding(start = 32.dp, end = 32.dp, top = 8.dp),
+//                colors = ButtonDefaults.buttonColors(backgroundColor = colorResource(R.color.buttoncontinue)),
+//                shape = RoundedCornerShape(24.dp),
+//                elevation = ButtonDefaults.elevation(defaultElevation = 4.dp)){
+//                Text(text = "Contact",
+//                    color = colorResource(R.color.blacktext),
+//                    fontSize = 20.sp,
+//                    fontWeight = FontWeight.Bold
+//                )
+//            }
         }
     }
 }
